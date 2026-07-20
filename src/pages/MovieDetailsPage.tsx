@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { TmdbMovieDetails, TmdbWatchProviders, TmdbVideo } from '../types';
 import { useTmdbApi } from '../hooks/useTmdbApi';
 import { Loader } from '../components/Loader';
+import { ReviewSummaryCard } from '../components/ui/card-2';
 
 export const MovieDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -102,12 +103,20 @@ export const MovieDetailsPage = () => {
         >
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 6 }}>
             {/* Poster */}
-            <Box sx={{ flexShrink: 0, width: { xs: '100%', md: 350 } }}>
+            <Box sx={{ flexShrink: 0, width: { xs: '100%', md: 350 }, display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'center' }}>
               <img
                 src={posterUrl}
                 alt={movie.title}
                 style={{ width: '100%', borderRadius: 16, boxShadow: '0 20px 60px rgba(0,0,0,0.5)' }}
               />
+              {movie.vote_average > 0 && (
+                <ReviewSummaryCard
+                  rating={movie.vote_average / 2}
+                  reviewCount={movie.vote_count}
+                  summaryText={`Рейтинг глядачів: ${movie.vote_average.toFixed(1)} з 10 (${movie.vote_count} голосів)`}
+                  className="w-full border-pink-500/20 bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0f1e]/80 shadow-[0_0_20px_rgba(255,64,129,0.15)]"
+                />
+              )}
             </Box>
 
             {/* Details */}

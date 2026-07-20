@@ -133,13 +133,34 @@ export const Header = ({
 
   return (
     <>
-      <AppBar position="sticky" sx={{ background: 'linear-gradient(90deg, #1a1a2e 0%, #16213e 100%)', mb: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+      <AppBar 
+        position="sticky" 
+        sx={{ 
+          background: 'linear-gradient(90deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 15, 30, 0.9) 100%)', 
+          backdropFilter: 'blur(15px)',
+          mb: 4, 
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.2)',
+          zIndex: 1100
+        }}
+      >
         <Toolbar sx={{ flexWrap: 'wrap', gap: 2, justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="h4" sx={{ fontWeight: 'bold', fontFamily: "'Poppins', sans-serif", display: { xs: 'none', sm: 'block' } }}>
+            <Typography 
+              variant="h4" 
+              sx={{ 
+                fontWeight: 800, 
+                fontFamily: "'Outfit', sans-serif", 
+                display: { xs: 'none', sm: 'block' },
+                background: 'linear-gradient(90deg, #9c27b0 0%, #ff4081 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 0 15px rgba(255, 64, 129, 0.3)'
+              }}
+            >
               🎬 CineFlix
             </Typography>
-            <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: "'Poppins', sans-serif", display: { xs: 'block', sm: 'none' } }}>
+            <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: "'Outfit', sans-serif", display: { xs: 'block', sm: 'none' } }}>
               🎬
             </Typography>
           </Box>
@@ -182,16 +203,20 @@ export const Header = ({
                     width: '100%',
                     '& .MuiOutlinedInput-root': {
                       color: 'white',
-                      borderRadius: '12px',
-                      backgroundColor: 'rgba(255,255,255,0.05)',
-                      '& fieldset': { borderColor: 'rgba(255,255,255,0.1)' },
-                      '&:hover fieldset': { borderColor: 'rgba(255,255,255,0.2)' },
-                      '&:focus-within fieldset': { borderColor: '#ff4081', borderWidth: 2 },
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      boxShadow: '0 0 0 0 rgba(255, 64, 129, 0)'
-                    },
-                    '& .MuiOutlinedInput-root.Mui-focused': {
-                      boxShadow: '0 0 20px rgba(255, 64, 129, 0.3)'
+                      borderRadius: '16px',
+                      backgroundColor: 'rgba(255,255,255,0.04)',
+                      backdropFilter: 'blur(5px)',
+                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      '& fieldset': { border: 'none' },
+                      '&:hover': {
+                        border: '1px solid rgba(255, 64, 129, 0.3)',
+                        backgroundColor: 'rgba(255,255,255,0.06)'
+                      },
+                      '&:focus-within': {
+                        border: '1px solid #ff4081',
+                        boxShadow: '0 0 20px rgba(255, 64, 129, 0.4)'
+                      },
+                      transition: 'all 0.3s ease'
                     },
                     '& .MuiInputBase-input::placeholder': { color: 'rgba(255,255,255,0.4)' }
                   }}
@@ -203,11 +228,16 @@ export const Header = ({
                 startIcon={filtersOpen ? <CloseIcon /> : <FilterListIcon />}
                 onClick={() => setFiltersOpen(!filtersOpen)}
                 sx={{
-                  backgroundColor: '#9c27b0',
-                  '&:hover': { backgroundColor: '#7b1fa2' },
-                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #9c27b0 0%, #ff4081 100%)',
+                  '&:hover': { 
+                    background: 'linear-gradient(135deg, #7b1fa2 0%, #f50057 100%)',
+                    boxShadow: '0 0 15px rgba(255, 64, 129, 0.5)'
+                  },
+                  borderRadius: '14px',
                   textTransform: 'none',
-                  fontWeight: 600
+                  fontWeight: 700,
+                  boxShadow: '0 0 10px rgba(156, 39, 176, 0.3)',
+                  transition: 'all 0.3s ease'
                 }}
               >
                 Filters

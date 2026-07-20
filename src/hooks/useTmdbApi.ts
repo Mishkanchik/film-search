@@ -162,25 +162,21 @@ const useTmdbApiState = () => {
     fetchInitialData();
   }, [fetchGenres, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, fetchUpcomingMovies]);
 
-  // Set isSearchMode and fetch immediately
+  // Set isSearchMode and fetch when search parameters or page changes
   useEffect(() => {
-    console.log("useEffect triggered with:", { searchQuery, selectedGenre, selectedRating });
     if (searchQuery || selectedGenre || selectedRating) {
       setIsSearchMode(true);
-      setCurrentPage(1);
-      fetchMovies(searchQuery, selectedGenre, selectedRating, 1);
+      fetchMovies(searchQuery, selectedGenre, selectedRating, currentPage);
     } else {
       setIsSearchMode(false);
       setSearchResults([]);
     }
-  }, [searchQuery, selectedGenre, selectedRating, fetchMovies]);
+  }, [searchQuery, selectedGenre, selectedRating, currentPage, fetchMovies]);
 
-  // Handle pagination in search mode
+  // Reset page to 1 when search parameters change
   useEffect(() => {
-    if (isSearchMode && currentPage > 1) {
-      fetchMovies(searchQuery, selectedGenre, selectedRating, currentPage);
-    }
-  }, [currentPage, isSearchMode, searchQuery, selectedGenre, selectedRating, fetchMovies]);
+    setCurrentPage(1);
+  }, [searchQuery, selectedGenre, selectedRating]);
 
   return {
     popularMovies,
