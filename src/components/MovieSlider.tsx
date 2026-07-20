@@ -79,9 +79,12 @@ export const MovieSlider = ({ title, movies, imageBaseUrl }: MovieSliderProps) =
           display: 'flex',
           gap: 2,
           overflowX: 'auto',
+          overflowY: 'visible',
           scrollbarWidth: 'none',
           '&::-webkit-scrollbar': { display: 'none' },
-          pb: 2
+          py: 3,
+          px: 1,
+          mx: -1
         }}
       >
         {movies.map((movie, index) => (

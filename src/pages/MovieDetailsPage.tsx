@@ -123,7 +123,6 @@ export const MovieDetailsPage = () => {
                   reviewCount={movie.vote_count}
                   reviewsLabel={t.reviews}
                   summaryText={`${t.audienceRating}: ${movie.vote_average.toFixed(1)} / 10 (${movie.vote_count} ${t.votes})`}
-                  className="w-full border-white/10 bg-[#1a1a2e]/40 backdrop-blur-md shadow-lg"
                 />
               )}
             </Box>

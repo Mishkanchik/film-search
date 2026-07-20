@@ -94,7 +94,7 @@ export const ReviewSummaryCard: React.FC<ReviewSummaryCardProps> = ({
   return (
     <motion.div
       className={cn(
-        'w-full max-w-xs rounded-xl border bg-card p-6 text-center shadow-sm',
+        'w-full max-w-xs rounded-xl p-6 text-center',
         'flex flex-col items-center justify-center',
         className
       )}
