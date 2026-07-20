@@ -36,42 +36,39 @@ function ScrollToTop() {
 function AppContent() {
   const {
     genres,
-    selectedGenre,
-    setSelectedGenre,
-    selectedRating,
-    setSelectedRating,
+    selectedGenres,
+    setSelectedGenres,
+    selectedRatingRange,
+    setSelectedRatingRange,
     searchQuery,
-    setSearchQuery
+    setSearchQuery,
+    language,
+    setLanguage
   } = useTmdbApi();
 
   const navigate = useNavigate();
   const location = useLocation();
-  const lastHomeSearchRef = useRef({ searchQuery, selectedGenre, selectedRating });
+  const lastHomeSearchRef = useRef({ searchQuery, selectedGenres, selectedRatingRange });
 
   // Update last known homepage search parameters
   useEffect(() => {
     if (location.pathname === '/') {
-      lastHomeSearchRef.current = { searchQuery, selectedGenre, selectedRating };
+      lastHomeSearchRef.current = { searchQuery, selectedGenres, selectedRatingRange };
     }
-  }, [location.pathname, searchQuery, selectedGenre, selectedRating]);
+  }, [location.pathname, searchQuery, selectedGenres, selectedRatingRange]);
 
   // Redirect to homepage if search or filter changes while on another page
   useEffect(() => {
     if (location.pathname !== '/') {
       const changed =
         searchQuery !== lastHomeSearchRef.current.searchQuery ||
-        selectedGenre !== lastHomeSearchRef.current.selectedGenre ||
-        selectedRating !== lastHomeSearchRef.current.selectedRating;
+        JSON.stringify(selectedGenres) !== JSON.stringify(lastHomeSearchRef.current.selectedGenres) ||
+        JSON.stringify(selectedRatingRange) !== JSON.stringify(lastHomeSearchRef.current.selectedRatingRange);
       if (changed) {
         navigate('/');
       }
     }
-  }, [location.pathname, searchQuery, selectedGenre, selectedRating, navigate]);
-
-  // Handle anime genre (special case)
-  const handleGenreChange = (genreId: number | null) => {
-    setSelectedGenre(genreId);
-  };
+  }, [location.pathname, searchQuery, selectedGenres, selectedRatingRange, navigate]);
 
   return (
     <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0f0f1e 0%, #16213e 100%)' }}>
@@ -80,10 +77,12 @@ function AppContent() {
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
         genres={genres}
-        selectedGenre={selectedGenre}
-        onGenreChange={handleGenreChange}
-        selectedRating={selectedRating}
-        onRatingChange={setSelectedRating}
+        selectedGenres={selectedGenres}
+        onGenreChange={setSelectedGenres}
+        selectedRatingRange={selectedRatingRange}
+        onRatingChange={setSelectedRatingRange}
+        language={language}
+        onLanguageChange={setLanguage}
       />
       <Routes>
         <Route path="/" element={<HomePage />} />

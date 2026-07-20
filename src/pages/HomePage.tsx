@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Container, Grid, Typography, Box, Pagination as MuiPagination, IconButton, CircularProgress, Button } from '@mui/material';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MovieCard } from '../components/MovieCard';
 import { MovieSlider } from '../components/MovieSlider';
 import { Loader } from '../components/Loader';
 import { useTmdbApi } from '../hooks/useTmdbApi';
+import { translations } from '../lib/translations';
 
 export const HomePage = () => {
   const {
@@ -15,7 +16,7 @@ export const HomePage = () => {
     upcomingMovies,
     searchResults,
     genres,
-    selectedGenre,
+    selectedGenres,
     searchQuery,
     setSearchQuery,
     initialLoading,
@@ -25,8 +26,11 @@ export const HomePage = () => {
     setCurrentPage,
     totalPages,
     isSearchMode,
-    TMDB_IMAGE_BASE
+    TMDB_IMAGE_BASE,
+    language
   } = useTmdbApi();
+
+  const t = translations[language];
 
   console.log("HomePage: isSearchMode:", isSearchMode, "searchResults:", searchResults);
 
@@ -151,7 +155,7 @@ export const HomePage = () => {
                     zIndex: 2
                   }}
                 >
-                  <ArrowBackIos />
+                  <ChevronLeft />
                 </IconButton>
 
                 <IconButton
@@ -167,7 +171,7 @@ export const HomePage = () => {
                     zIndex: 2
                   }}
                 >
-                  <ArrowForwardIos />
+                  <ChevronRight />
                 </IconButton>
 
                 <Box
@@ -200,10 +204,10 @@ export const HomePage = () => {
             )}
 
             {/* Movie Sliders */}
-            <MovieSlider title="🎬 Now Playing" movies={nowPlayingMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
-            <MovieSlider title="🚀 Upcoming" movies={upcomingMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
-            <MovieSlider title="🔥 Popular" movies={popularMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
-            <MovieSlider title="⭐ Top Rated" movies={topRatedMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
+            <MovieSlider title={`🎬 ${t.nowPlaying}`} movies={nowPlayingMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
+            <MovieSlider title={`🚀 ${t.upcoming}`} movies={upcomingMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
+            <MovieSlider title={`🔥 ${t.popular}`} movies={popularMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
+            <MovieSlider title={`⭐ ${t.topRated}`} movies={topRatedMovies} imageBaseUrl={TMDB_IMAGE_BASE} />
           </>
         ) : (
           /* Search/Filter Results */
@@ -211,10 +215,8 @@ export const HomePage = () => {
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
               <Typography variant="h4" sx={{ color: 'white', fontWeight: 'bold' }}>
                 {searchQuery
-                  ? `Search Results: "${searchQuery}"`
-                  : selectedGenre
-                  ? `Movies in Genre: ${genres.find(g => g.id === selectedGenre)?.name || 'Animation'}`
-                  : 'Filter Results'}
+                  ? `${t.searchResults}: "${searchQuery}"`
+                  : t.searchResults}
               </Typography>
               {searchLoading && <CircularProgress sx={{ color: '#ff4081' }} size={32} />}
             </Box>

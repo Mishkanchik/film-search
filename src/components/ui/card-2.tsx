@@ -15,6 +15,8 @@ interface ReviewSummaryCardProps {
   summaryText: string;
   /** Optional class name for custom styling. */
   className?: string;
+  /** Label for review count. */
+  reviewsLabel?: string;
 }
 
 /**
@@ -26,6 +28,7 @@ export const ReviewSummaryCard: React.FC<ReviewSummaryCardProps> = ({
   maxRating = 5,
   summaryText,
   className,
+  reviewsLabel,
 }) => {
   // Refs to animate the numbers
   const ratingRef = useRef<HTMLSpanElement>(null);
@@ -119,7 +122,7 @@ export const ReviewSummaryCard: React.FC<ReviewSummaryCardProps> = ({
       <h2 className="mt-4 text-4xl font-bold tracking-tight text-foreground">
         <span ref={ratingRef}>0.0</span>
         <span className="text-3xl font-semibold">
-          {' '}(<span ref={reviewCountRef}>0</span> Reviews)
+          {' '}(<span ref={reviewCountRef}>0</span> {reviewsLabel || 'Reviews'})
         </span>
       </h2>
 
