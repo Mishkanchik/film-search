@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -45,6 +46,7 @@ export const Header = ({
   selectedRating,
   onRatingChange
 }: HeaderProps) => {
+  const navigate = useNavigate();
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
@@ -59,6 +61,11 @@ export const Header = ({
     onSearchQueryChange('');
     onGenreChange(null);
     onRatingChange(null);
+  };
+
+  const handleLogoClick = () => {
+    handleClearAll();
+    navigate('/');
   };
 
   const filterContent = (
@@ -148,6 +155,7 @@ export const Header = ({
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Typography 
               variant="h4" 
+              onClick={handleLogoClick}
               sx={{ 
                 fontWeight: 800, 
                 fontFamily: "'Outfit', sans-serif", 
@@ -155,12 +163,22 @@ export const Header = ({
                 background: 'linear-gradient(90deg, #9c27b0 0%, #ff4081 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                textShadow: '0 0 15px rgba(255, 64, 129, 0.3)'
+                textShadow: '0 0 15px rgba(255, 64, 129, 0.3)',
+                cursor: 'pointer'
               }}
             >
               🎬 CineFlix
             </Typography>
-            <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: "'Outfit', sans-serif", display: { xs: 'block', sm: 'none' } }}>
+            <Typography 
+              variant="h5" 
+              onClick={handleLogoClick}
+              sx={{ 
+                fontWeight: 'bold', 
+                fontFamily: "'Outfit', sans-serif", 
+                display: { xs: 'block', sm: 'none' },
+                cursor: 'pointer'
+              }}
+            >
               🎬
             </Typography>
           </Box>

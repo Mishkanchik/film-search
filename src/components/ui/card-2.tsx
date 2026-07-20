@@ -107,7 +107,7 @@ export const ReviewSummaryCard: React.FC<ReviewSummaryCardProps> = ({
             <Star
               className={cn(
                 'h-6 w-6',
-                rating >= (i + 1) * (10 / maxRating) ? 'text-yellow-400' : 'text-muted-foreground/30'
+                rating >= (i + 0.5) * (10 / maxRating) ? 'text-yellow-400' : 'text-muted-foreground/30'
               )}
               fill="currentColor"
             />

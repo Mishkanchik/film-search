@@ -111,7 +111,7 @@ export const MovieDetailsPage = () => {
               />
               {movie.vote_average > 0 && (
                 <ReviewSummaryCard
-                  rating={movie.vote_average / 2}
+                  rating={movie.vote_average}
                   reviewCount={movie.vote_count}
                   summaryText={`Рейтинг глядачів: ${movie.vote_average.toFixed(1)} з 10 (${movie.vote_count} голосів)`}
                   className="w-full border-pink-500/20 bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0f1e]/80 shadow-[0_0_20px_rgba(255,64,129,0.15)]"
