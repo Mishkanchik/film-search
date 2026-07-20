@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { MovieCard } from './MovieCard';
 import { TmdbMovie } from '../types';
 
@@ -30,18 +30,46 @@ export const MovieSlider = ({ title, movies, imageBaseUrl }: MovieSliderProps) =
         <Typography variant="h4" sx={{ color: 'white', fontWeight: 'bold' }}>
           {title}
         </Typography>
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1.5 }}>
           <IconButton
             onClick={() => scroll('left')}
-            sx={{ color: 'white', backgroundColor: 'rgba(255,255,255,0.1)', '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' } }}
+            sx={{ 
+              color: 'white', 
+              background: 'rgba(255, 255, 255, 0.04)', 
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(5px)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              width: 48,
+              height: 48,
+              '&:hover': { 
+                background: 'linear-gradient(135deg, #9c27b0 0%, #ff4081 100%)',
+                borderColor: 'transparent',
+                boxShadow: '0 0 20px rgba(255, 64, 129, 0.55)',
+                transform: 'scale(1.08)'
+              }
+            }}
           >
-            <ArrowBackIos />
+            <ChevronLeft sx={{ fontSize: 28 }} />
           </IconButton>
           <IconButton
             onClick={() => scroll('right')}
-            sx={{ color: 'white', backgroundColor: 'rgba(255,255,255,0.1)', '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' } }}
+            sx={{ 
+              color: 'white', 
+              background: 'rgba(255, 255, 255, 0.04)', 
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(5px)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              width: 48,
+              height: 48,
+              '&:hover': { 
+                background: 'linear-gradient(135deg, #9c27b0 0%, #ff4081 100%)',
+                borderColor: 'transparent',
+                boxShadow: '0 0 20px rgba(255, 64, 129, 0.55)',
+                transform: 'scale(1.08)'
+              }
+            }}
           >
-            <ArrowForwardIos />
+            <ChevronRight sx={{ fontSize: 28 }} />
           </IconButton>
         </Box>
       </Box>

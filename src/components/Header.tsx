@@ -224,20 +224,25 @@ export const Header = ({
               </Box>
 
               <Button
-                variant="contained"
+                variant="outlined"
                 startIcon={filtersOpen ? <CloseIcon /> : <FilterListIcon />}
                 onClick={() => setFiltersOpen(!filtersOpen)}
                 sx={{
-                  background: 'linear-gradient(135deg, #9c27b0 0%, #ff4081 100%)',
-                  '&:hover': { 
-                    background: 'linear-gradient(135deg, #7b1fa2 0%, #f50057 100%)',
-                    boxShadow: '0 0 15px rgba(255, 64, 129, 0.5)'
-                  },
-                  borderRadius: '14px',
+                  color: 'white',
+                  backgroundColor: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  backdropFilter: 'blur(5px)',
+                  borderRadius: '16px',
+                  px: 3,
+                  py: 1.2,
                   textTransform: 'none',
-                  fontWeight: 700,
-                  boxShadow: '0 0 10px rgba(156, 39, 176, 0.3)',
-                  transition: 'all 0.3s ease'
+                  fontWeight: 600,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    border: '1px solid #ff4081',
+                    backgroundColor: 'rgba(255, 64, 129, 0.05)',
+                    boxShadow: '0 0 15px rgba(255, 64, 129, 0.2)'
+                  }
                 }}
               >
                 Filters

@@ -143,26 +143,6 @@ export const MovieDetailsPage = () => {
                 ))}
               </Box>
 
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4, flexWrap: 'wrap' }}>
-                {movie.vote_average > 0 && (
-                  <>
-                    <Rating
-                      value={movie.vote_average / 2}
-                      readOnly
-                      precision={0.1}
-                      size="large"
-                      sx={{ color: '#ffd700' }}
-                    />
-                    <Typography variant="h4" sx={{ color: '#ffd700', fontWeight: 'bold' }}>
-                      {movie.vote_average.toFixed(1)}
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.7)' }}>
-                      ({movie.vote_count} votes)
-                    </Typography>
-                  </>
-                )}
-              </Box>
-
               <Typography variant="h5" sx={{ color: 'white', fontWeight: 'bold', mb: 2 }}>
                 Overview
               </Typography>
