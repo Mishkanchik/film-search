@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9c27b0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4081;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="url(#grad1)"/>
+  <g transform="translate(24,32)">
+    <path d="M80 24C80 37.2548 69.2548 48 56 48C42.7452 48 32 37.2548 32 24C32 10.7452 42.7452 0 56 0C69.2548 0 80 10.7452 80 24Z" fill="#fff"/>
+    <g fill="#fff" transform="translate(48,40)">
+      <path d="M12 18V18V18H18V6V6V6H6V18H12Z" />
+      <path d="M12 0C5.373 0 0 5.373 0 12V18H12H24V12C24 5.373 18.627 0 12 0Z" />
+      <path d="M30 6V18H36V12C36 8.686 33.314 6 30 6Z" />
+      <path d="M30 24V36H36V30C36 26.686 33.314 24 30 24Z" />
+      <path d="M12 30V36H24V30C24 26.686 21.314 24 18 24H12Z" />
+    </g>
+    <path d="M56 8L52 24L60 24L56 8Z" fill="#fff"/>
+    <path d="M64 40H48L44 24L40 40" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M64 40L60 24L68 24L64 40Z" fill="#fff"/>
+  </g>
+</svg>
